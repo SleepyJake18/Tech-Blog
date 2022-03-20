@@ -1,0 +1,22 @@
+[
+  {
+    "name": "DroppinLinez",
+    "email": "email@email.com",
+    "password": "password12345"
+  },
+  {
+    "name": "BigPoppaCode",
+    "email": "email@email1.com",
+    "password": "password12345"
+  },
+  {
+    "name": "IAmCode",
+    "email": "email@email2.com",
+    "password": "password12345"
+  },
+  {
+    "name": "CodeMonger",
+    "email": "email@email3.com",
+    "password": "password12345"
+  }
+]
