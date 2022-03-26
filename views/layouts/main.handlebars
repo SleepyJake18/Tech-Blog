@@ -4,30 +4,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Registry</title>
-  <link rel="stylesheet" href="/css/jass.css">
+  <title>Tiny Tech Talk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/stylesheet.css">
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
+  <header class="navbar-fixed">
+    <nav class="customNav">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center cardTitle">Tiny Tech Talk</a>
+      <ul id="nav-mobile" class="left show-on-large">
+        <li><a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a></li>
+      </ul>
+      <ul class="right">
+         <!-- Only display the logout button if the user is logged in -->
+         {{#if logged_in}}
+        <li>
+          <button id="#logout">Log Out</button>
+        </li>
+        {{else}}
+        <li>  
+          <form method="GET" action="/login">
+            <button>Log In</button>
+          </form>
+        </li>
+        <li>  
+          <form method="GET" action="/signup">
+            <button>Sign Up</button>
+          </form> 
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
   </header>
+  <ul id="slide-out" class="sidenav customSideNav">
+    <li><a href="/" class="waves-effect customLink"><i class="material-icons">home</i>Home</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/dashboard" class="waves-effect customLink"><i class="material-icons">dashboard</i>Dashboard</a></li>
+    <li><div class="divider"></div></li>
+    <li><a href="/dashboard/post/new" class="waves-effect customLink"><i class="material-icons">add</i>Create Post</a></li>
+    <li><div class="divider"></div></li>
+  </ul>
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
-  <footer>
-      
-  </footer>
+  <footer class="page-footer customFooter">
+          <div class="container">
+            <div class="row">
+              <div class="col s12">
+                <h5 class="white-text center cardTitle">Thank You For Stopping By</h5>
+                <p class="grey-text text-lighten-4 center footerText">This blog was made with love by Jacob Martin (that's me!), a junior level full stack software developer. If you like what you see, please feel free to check out my other work or reach out using the contact info below!</p>
+              </div>
+              <div class="col s12">
+                <h5 class=" center cardTitle">Contact Info</h5>
+                <ul class="footerLinks">
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/SleepyJake18" target="_blank">GitHub</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/jacob-martin-779905222/" target="_blank">LinkedIn</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">740-876-2004</a></li>
+                  <li><a class="grey-text text-lighten-3" href="mailto: jsmartin01@gmail.com">jsmartin01@gmail.com</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://sleepyjake18.github.io/" target="_blank">Portfolio</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
 
   <!-- Only include the logout script if the user is logged in -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0-alpha/dist/js/materialize.min.js"></script>
+  
 </body>
 
 </html>

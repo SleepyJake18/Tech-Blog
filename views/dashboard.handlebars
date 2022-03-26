@@ -1,7 +1,20 @@
-<h1>Dashboard</h1>
+<h1 class="center">Dashboard</h1>
 
 {{#each posts as |post|}}
-<h2>{{post.title}}</h2>
-<p>{{post.content}}</p>
-<p>{{post.comment.content}}</p>
+<div class="row">
+    <div class="col s12">
+      <div class="card customCard">
+        <div class="card-content white-text">
+          <span class="card-title cardTitle">{{post.title}}  
+            <form action="/dashboard/edit/{{post.id}}">
+              <button>Edit</button>
+            </form> 
+          </span>
+          <p>{{post.content}}</p>
+        </div>
+        <div class="card-content">
+        </div>
+      </div>
+    </div>
+  </div>
 {{/each}}
