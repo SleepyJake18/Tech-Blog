@@ -9,14 +9,14 @@ const loginFormHandler = async (event) => {
   
     if (email && password && name) {
       // Send the e-mail and password to the server
-      const response = await fetch('/api/users/login', {
+      const response = await fetch('/api/users/', {
         method: 'POST',
         body: JSON.stringify({ email, password, name }),
         headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
       } else {
         alert('Failed to log in');
       }

@@ -1,0 +1,22 @@
+[
+    {
+"title": "JavaScript is the best coding language",
+"content": "JavaScript is the most flexible and powerful coding language available and you can't change my mind!",
+"user_id": 1
+},
+{
+"title": "Help! My server isn't working!",
+"content": "I can't use MySql apparently! Databases are hard :(",
+"user_id": 2
+},
+{
+"title": "CSS is the best",
+"content": "CSS is my favorite language for making pages look almost as pretty as I am.",
+"user_id": 3
+},
+{
+"title": "HTML semantics hard",
+"content": "Being semantically correct in HTML is harder than it looks! I still got my LinkedIn badge tho!",
+"user_id": 4
+}
+]

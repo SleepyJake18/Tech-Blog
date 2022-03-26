@@ -1,0 +1,22 @@
+[
+    {
+        "content": "Python is literally better bro. Trust me.",
+        "user_id": 2 ,
+        "post_id": 1
+    },
+    {
+        "content": "Just use MongoDB, it's the wild west but still easier to use imo.",
+        "user_id": 3,
+        "post_id": 2
+    },
+    {
+        "content": "I'll leave all that to people like you and just focus on my javascript.",
+        "user_id": 4,
+        "post_id": 3
+    },
+    {
+        "content": "Congratulations! That'll look good when you apply to your next job!",
+        "user_id": 1,
+        "post_id": 4
+    }
+]
