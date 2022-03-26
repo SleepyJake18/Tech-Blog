@@ -1,1 +1,7 @@
 <h1>Dashboard</h1>
+
+{{#each posts as |post|}}
+<h2>{{post.title}}</h2>
+<p>{{post.content}}</p>
+<p>{{post.comment.content}}</p>
+{{/each}}
