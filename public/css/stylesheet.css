@@ -67,3 +67,44 @@ main {
     justify-content: space-evenly;
     font-family: 'Roboto', sans-serif;
 }
+
+.singlePost {
+    display: flex;
+    flex-flow: column;
+    margin-top: 200px;
+    border: solid 5px rgb(10, 10, 10);
+    justify-content: space-between;
+    align-items: space-evenly;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.singlePostHeader {
+    background-color: #26a69a !important;
+    border-bottom: 5px solid rgb(10, 10, 10);   
+    font-family: 'Roboto', sans-serif;
+    color: rgb(233, 231, 231);
+    font-size: 20px;
+}
+
+.singlePostHeader h4 {
+    font-family: 'Righteous', cursive;
+    color:rgb(233, 231, 231);
+    font-size: 40px;
+}
+
+.singlePostBody {
+    background-color: rgb(233, 231, 231);
+    margin: 0 !important;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.singlePostComment {
+    background-color: rgb(233, 231, 231);
+    margin: 0 !important;
+    border-bottom: 3px solid rgb(10, 10, 10);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}

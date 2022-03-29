@@ -67,4 +67,22 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/new/post', async (req,res) => {
+  try{
+    console.log(req.body);
+    const newPostData = await Post.create({
+      title: req.body.title,
+      content: req.body.content,
+      user_id: req.session.user_id,
+    });
+    console.log(newPostData);
+    req.session.save(() => {
+      res.status(200).json(newPostData);
+    })
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
 module.exports = router;

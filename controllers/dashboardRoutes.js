@@ -7,10 +7,12 @@ router.get('/', withAuth, async (req, res) => {
   try {
     let posts = {};
     //let comments = {};
-    const postData = await Post.findAll({include: [{model:Comment}]});
+    const postData = await Post.findAll({include: [{model:Comment, include: [{model:User}]}, {model:User}]});
     posts = postData.map((post) => post.get({plain:true}));
+    console.log(posts);
     res.render(`dashboard`, {
-      posts
+      posts,
+     logged_in: req.session.logged_in
     });
  //what would we like to show on our homepage?
   } catch (err) {
@@ -20,7 +22,9 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/post/new', withAuth, async (req, res) => {
     try {
-      res.render(`create-post`);
+      res.render(`create-post`, {
+        logged_in: req.session.logged_in
+      });
    //what would we like to show on our homepage?
     } catch (err) {
       res.status(500).json(err);
@@ -29,7 +33,15 @@ router.get('/post/new', withAuth, async (req, res) => {
 
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-      res.render(`edit-post`);
+      let editPost = {};
+      const editPostData = await Post.findByPk(req.params.id,
+      {include: [{model:User}]});
+      console.log(editPostData);
+      editPost = editPostData.get(({plain:true}));
+      res.render(`edit-post`, {
+        editPost,
+        logged_in: req.session.logged_in
+      });
    //what would we like to show on our homepage?
     } catch (err) {
       res.status(500).json(err);
@@ -38,9 +50,19 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
   router.get('/post/:id', withAuth, async (req, res) => {
     try {
-      res.render(`one-post`);
-   //what would we like to show on our homepage?
-    } catch (err) {
+
+      let singlePost = {};
+      //let comments = {};
+      const singlePostData = await Post.findByPk(req.params.id, {include: [{model:Comment, include: [{model:User}]}, {model:User}]});
+      console.log(singlePostData);
+      singlePost = singlePostData.get(({plain:true}));
+      res.render(`one-post`, {
+        singlePost,
+        logged_in: req.session.logged_in
+      });
+      //what would we like to show on our homepage?
+    }
+    catch (err) {
       res.status(500).json(err);
     }
   });
