@@ -20,6 +20,11 @@ main {
 
 .cardTitle {
     font-family: 'Righteous', cursive;
+    text-decoration: none !important;
+}
+
+.cardTitle:hover {
+    text-shadow: 2px 2px #26a69a;
 }
 
 .customNav {
@@ -49,6 +54,19 @@ main {
 .customFooter {
     background-color: rgb(10, 10, 10);
     color: rgb(233, 231, 231);
+}
+
+.whiteText {
+    color: rgb(233, 231, 231) !important;
+}
+
+.editBtn {
+    display: inline;
+    justify-content: end;
+}
+
+.newCommentForm {
+    background-color:rgb(10, 10, 10) ;
 }
 
 .homeText {

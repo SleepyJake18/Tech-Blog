@@ -5,15 +5,19 @@
     <div class="col s12">
       <div class="card customCard">
         <div class="card-content white-text">
-          <span class="card-title cardTitle">{{post.title}}  
-            <form action="/dashboard/edit/{{post.id}}">
+            <form class="editBtn" action="/dashboard/edit/{{post.id}}">
               <button>Edit</button>
             </form> 
+          <span class="card-content">Post By: {{post.user.name}}</span>
+          <a href="/dashboard/post/{{post.id}}" class="white-text">
+          <span class="card-title cardTitle">{{post.title}}  
           </span>
+          </a>
           <p>{{post.content}}</p>
         </div>
         <div class="card-content">
           {{#each post.comments as |comment|}}
+          <p>Comment By: {{comment.user.name}}</p>
           <p>{{comment.content}}</p>
           {{/each}}
         </div>
@@ -21,3 +25,4 @@
     </div>
   </div>
 {{/each}}
+

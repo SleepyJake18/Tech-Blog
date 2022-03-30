@@ -67,4 +67,21 @@ router.get('/edit/:id', withAuth, async (req, res) => {
     }
   });
 
+  router.get('/edit/comment/:id', withAuth, async (req, res) => {
+    try {
+      let editComment = {};
+      const editCommentData = await Comment.findByPk(req.params.id,
+      {include: [{model:User}]});
+      console.log(editCommentData);
+      editComment = editCommentData.get(({plain:true}));
+      res.render(`edit-comment`, {
+        editComment,
+        logged_in: req.session.logged_in
+      });
+   //what would we like to show on our homepage?
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 module.exports = router;

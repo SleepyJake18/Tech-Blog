@@ -2,20 +2,32 @@
   <div class="col s12 singlePostHeader">
     <h4>{{singlePost.title}}</h4>
     <p>Post Created By: {{singlePost.user.name}}</p>
+    <button class="deleteBtn" type="submit">Delete</button>
   </div>
-    <div class="col s12 singlePostBody">
+  <div class="col s12 singlePostBody">
+    <p>
+      {{singlePost.content}}
+    </p>
+  </div>
+  <div class="col s12 singlePostComment">
+    {{#each singlePost.comments as |comment|}}
       <p>
-        {{singlePost.content}}
+        Comment By:
+        {{comment.user.name}}
       </p>
-    </div>
-    <div class="col s12 singlePostComment">
-      {{#each singlePost.comments as |comment|}}
       <p>
-          Comment By: {{comment.user.name}}
+        {{comment.content}}
       </p>
-        <p>
-          {{comment.content}}
-        </p>
-      {{/each}}
-    </div>
+      <button class="commentDeleteBtn" type="submit">Delete</button>
+    {{/each}}
+  </div>
+  <div class="newCommentForm">
+    <label for="newComment">Add Comment</label>
+    <textarea id="newComment" class="materialize-textarea whiteText"></textarea>
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
 </div>
+
+<script src="/js/comment.js"></script>
+{{!-- <script src="/js/deleteComment.js"></script> --}}
+<script src="/js/deletePost.js"></script>

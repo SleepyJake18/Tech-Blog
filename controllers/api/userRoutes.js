@@ -85,4 +85,91 @@ router.post('/new/post', async (req,res) => {
   }
 });
 
+router.put('/edit/post/:id', async (req,res) => {
+  try{
+    console.log(req.body);
+    const editPostData = await Post.update({
+      title: req.body.title,
+      content: req.body.content,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+    );
+    console.log(editPostData);
+      res.status(200).json(editPostData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+router.post('/new/comment', async (req,res) => {
+  try{
+    console.log(req.body);
+    const newCommentData = await Comment.create({
+      content: req.body.content,
+      user_id: req.session.user_id,
+      post_id: req.body.comment_id
+    },
+    );
+    console.log(newCommentData);
+    req.session.save(() => {
+      res.status(200).json(newCommentData);
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+router.put('/edit/comment/:id', async (req,res) => {
+  try{
+    console.log(req.body);
+    const newCommentData = await Comment.update({
+      content: req.body.content,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+    );
+    console.log(newCommentData);
+      res.status(200).json(newCommentData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err);
+  }
+});
+
+router.delete('/post/delete/:id', (req, res) => {
+  // Looks for the books based book_id given in the request parameters
+  Post.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedPost) => {
+      res.json(deletedPost);
+    })
+    .catch((err) => res.json(err));
+});
+
+router.put('/comment/delete/:id', (req, res) => {
+  // Looks for the books based book_id given in the request parameters
+  console.log(req.params.id)
+  Comment.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedComment) => {
+      res.json(deletedComment);
+    })
+    .catch((err) => res.json(err));
+});
+
 module.exports = router;
